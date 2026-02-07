@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIKER 10 - Venta y Mantenimiento de Bicicletas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e53935;
+            --secondary: #1a237e;
+            --accent: #00c853;
+            --light: #f5f5f5;
+            --gray: #757575;
+            --dark: #121212;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo h1 {
+            font-size: 2rem;
+            margin-bottom: 0;
+            color: white;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            margin-right: 12px;
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.9)), url('https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--light), transparent);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+        
+.hero-bike {
+    font-size: 8rem;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* === AÑADE ESTO JUSTO AQUÍ === */
+/* LOGO PRINCIPAL */
+.hero-logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.main-logo {
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 5px solid white;
+    background-color: white;
+    padding: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-logo {
+        max-width: 280px;
+        border-width: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-logo {
+        max-width: 240px;
+        padding: 8px;
+    }
+}
+/* === FIN DEL CÓDIGO A AÑADIR === */
+
+@keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .contact-info-card {
+            background-color: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            display: inline-block;
+            padding: 2rem 2.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+        
+        .contact-info-card p {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info-card i {
+            margin-right: 12px;
+            color: var(--accent);
+            width: 22px;
+            text-align: center;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 0.5rem;
+            gap: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c62828;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(229, 57, 53, 0.4);
+        }
+        
+        .btn-success {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background-color: #00b248;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 200, 83, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #0d1b6b;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(26, 35, 126, 0.4);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background-color: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 1rem auto 0;
+        }
+        
+        /* Mission Vision Values */
+        .mv-section {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 3.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s ease;
+        }
+        
+        .mv-section:hover {
+            transform: translateY(-10px);
+        }
+        
+        .mv-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .mv-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-right: 1.5rem;
+            background-color: rgba(229, 57, 53, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .mv-content h3 {
+            color: var(--secondary);
+            font-size: 1.8rem;
+        }
+        
+        /* Bikes Section */
+        .bikes-section {
+            background-color: #f9f9f9;
+        }
+        
+        .bikes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .bike-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .bike-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .bike-image {
+            height: 220px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .bike-image i {
+            font-size: 8rem;
+            color: var(--primary);
+            opacity: 0.8;
+        }
+        
+        .bike-content {
+            padding: 2rem;
+        }
+        
+        .bike-content h3 {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .bike-price {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .bike-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .bike-features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.8rem;
+            position: relative;
+        }
+        
+        .bike-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .bike-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-top: 5px solid var(--primary);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            color: var(--secondary);
+        }
+        
+        /* Income Method */
+        .income-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #283593 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 3.5rem;
+            margin-top: 4rem;
+            box-shadow: 0 20px 50px rgba(26, 35, 126, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .income-section:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .income-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .income-section h2 {
+            color: white;
+            text-align: left;
+        }
+        
+        .income-section h2:after {
+            left: 0;
+            transform: none;
+            background-color: var(--accent);
+        }
+        
+        .income-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .income-feature {
+            flex: 1;
+            min-width: 250px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        .income-feature i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        /* Contact */
+        .contact-section {
+            background-color: #f0f4f8;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-map {
+            flex: 1;
+            min-width: 300px;
+            height: 350px;
+            background-color: #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-logo h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo span {
+            color: var(--primary);
+        }
+        
+        .footer-logo p {
+            color: #bbb;
+            line-height: 1.6;
+        }
+        
+        .footer-links h4, .footer-contact h4 {
+            color: var(--accent);
+            margin-bottom: 1.8rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 0.9rem;
+        }
+        
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links ul li a:hover {
+            color: white;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 1rem;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .footer-contact i {
+            color: var(--primary);
+            width: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid #333;
+            color: #999;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            .bikes-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark);
+                flex-direction: column;
+                padding: 2rem 0;
+                text-align: center;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                z-index: 999;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 1rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2.4rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .hero-bike {
+                font-size: 6rem;
+            }
+            
+            .contact-info-card {
+                padding: 1.5rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .mv-section {
+                padding: 2.5rem;
+            }
+            
+            .income-section {
+                padding: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 0.9rem 1.8rem;
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+            }
+            
+            .bikes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <i class="fas fa-bicycle logo-icon"></i>
+                <h1>BIKER <span>10</span></h1>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainMenu">
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#mission">Misión</a></li>
+                    <li><a href="#bikes">Bicicletas</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-logo-container">
+    <img src="logo-biker10.jpg" 
+         alt="BIKER 10 - Venta y mantenimiento de bicicletas" 
+         class="main-logo">
+</div>
+            <h2>BIKER 10 - Venta y Mantenimiento de Bicicletas</h2>
+            <p>Tu destino premium para encontrar la bicicleta perfecta y mantenerla en óptimas condiciones. Calidad, servicio y pasión sobre ruedas.</p>
+            
+            <div class="contact-info-card">
+                <p><i class="fas fa-map-marker-alt"></i> Calle 7 #3 - 80 B. Latino</p>
+                <p><i class="fas fa-phone"></i> 311 536 7536</p>
+                <p><i class="fas fa-bicycle"></i> Especialistas en bicicletas desde 1990</p>
+            </div>
+            
+            <div class="contact-buttons">
+                <a href="tel:3115367536" class="btn btn-primary">
+                    <i class="fas fa-phone"></i> Llamar Ahora
+                </a>
+                <a href="https://wa.me/573115367536" target="_blank" class="btn btn-success">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="#bikes" class="btn btn-secondary">
+                    <i class="fas fa-bicycle"></i> Ver Bicicletas
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission, Vision, Values -->
+    <section class="section" id="mission">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestra Esencia</h2>
+                <p>Conoce los principios que nos guían en BIKER 10</p>
+            </div>
+            
+            <div class="mv-section">
+                <div class="mv-header">
+                    <div class="mv-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="mv-content">
+                        <h3>Misión</h3>
+                        <p>Promover un estilo de vida saludable y sostenible a través de la venta de bicicletas de alta calidad y servicios de mantenimiento excepcionales. Queremos que cada persona encuentre la bicicleta perfecta para sus necesidades y disfrute de una experiencia de movilidad urbana segura, eficiente y placentera.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mv-section">
+                <div class="mv-header">
+                    <div class="mv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="mv-content">
+                        <h3>Visión</h3>
+                        <p>Ser la tienda de bicicletas líder en la región, reconocida por nuestra excelencia en servicio al cliente, calidad de productos y contribución a una comunidad más activa y saludable. Aspiramos a que cada hogar tenga al menos una bicicleta BIKER 10 para transporte, recreación o deporte.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mv-section">
+                <div class="mv-header">
+                    <div class="mv-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="mv-content">
+                        <h3>Valores</h3>
+                        <p><strong>Pasión por el ciclismo:</strong> Amamos lo que hacemos y eso se refleja en cada bicicleta que vendemos.<br>
+                        <strong>Calidad y durabilidad:</strong> Solo trabajamos con marcas y componentes que cumplan nuestros estándares.<br>
+                        <strong>Servicio personalizado:</strong> Cada cliente recibe atención individualizada según sus necesidades.<br>
+                        <strong>Sostenibilidad:</strong> Promovemos un transporte ecológico que cuida nuestro planeta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bikes Section -->
+    <section class="section bikes-section" id="bikes">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestras Bicicletas</h2>
+                <p>Descubre la bicicleta perfecta para ti</p>
+            </div>
+            
+            <div class="bikes-grid">
+                <div class="bike-card">
+                    <div class="bike-tag">Más Vendida</div>
+                    <div class="bike-image">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <div class="bike-content">
+                        <h3>Bicicleta Urbana "City Rider"</h3>
+                        <div class="bike-price">$850.000</div>
+                        <ul class="bike-features">
+                            <li>Cuadro de aluminio ligero</li>
+                            <li>Frenos de disco hidráulicos</li>
+                            <li>Cambios de 21 velocidades</li>
+                            <li>Llantas anti-pinchazos</li>
+                            <li>Asiento ergonómico ajustable</li>
+                        </ul>
+                        <a href="https://wa.me/573115367536?text=Estoy%20interesado%20en%20la%20bicicleta%20City%20Rider" target="_blank" class="btn btn-primary" style="width: 100%;">Consultar Disponibilidad</a>
+                    </div>
+                </div>
+                
+                <div class="bike-card">
+                    <div class="bike-tag">Novedad</div>
+                    <div class="bike-image">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <div class="bike-content">
+                        <h3>Bicicleta de Montaña "Trail Blazer"</h3>
+                        <div class="bike-price">$1.250.000</div>
+                        <ul class="bike-features">
+                            <li>Suspensión delantera de 120mm</li>
+                            <li>Cuadro de carbono reforzado</li>
+                            <li>Frenos de disco de alta potencia</li>
+                            <li>Llantas todo terreno 29"</li>
+                            <li>Transmisión Shimano Deore</li>
+                        </ul>
+                        <a href="https://wa.me/573115367536?text=Estoy%20interesado%20en%20la%20bicicleta%20Trail%20Blazer" target="_blank" class="btn btn-primary" style="width: 100%;">Consultar Disponibilidad</a>
+                    </div>
+                </div>
+                
+                <div class="bike-card">
+                    <div class="bike-tag">Económica</div>
+                    <div class="bike-image">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <div class="bike-content">
+                        <h3>Bicicleta Plegable "Urban Fold"</h3>
+                        <div class="bike-price">$720.000</div>
+                        <ul class="bike-features">
+                            <li>Plegable en 15 segundos</li>
+                            <li>Peso de solo 12kg</li>
+                            <li>Ruedas de 20 pulgadas</li>
+                            <li>Cambios de 7 velocidades</li>
+                            <li>Ideal para transporte público</li>
+                        </ul>
+                        <a href="https://wa.me/573115367536?text=Estoy%20interesado%20en%20la%20bicicleta%20Urban%20Fold" target="_blank" class="btn btn-primary" style="width: 100%;">Consultar Disponibilidad</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title" style="margin-top: 5rem;">
+                <h2>Servicios de Mantenimiento</h2>
+                <p>Mantenemos tu bicicleta en perfecto estado</p>
+            </div>
+            
+            <div class="services-grid" id="services">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Ajuste y Mantenimiento Básico</h3>
+                    <p>Revisión completa, lubricación, ajuste de frenos y cambios. Incluye limpieza general.</p>
+                    <div style="margin-top: 1.5rem; font-weight: 700; color: var(--primary);">Desde $60.000</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Reparación Especializada</h3>
+                    <p>Solución de problemas complejos, cambio de componentes dañados y ajuste de suspensión.</p>
+                    <div style="margin-top: 1.5rem; font-weight: 700; color: var(--primary);">Desde $120.000</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    <h3>Limpieza Profunda y Detallado</h3>
+                    <p>Limpieza a presión, desengrasado de transmisión y pulido de componentes.</p>
+                    <div style="margin-top: 1.5rem; font-weight: 700; color: var(--primary);">Desde $80.000</div>
+                </div>
+            </div>
+            
+            <!-- Income Method Section -->
+            <div class="income-section">
+                <div class="income-content">
+                    <h2>Método de Generación de Ingresos</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem; opacity: 0.9;">Valor agregado para nuestros clientes más comprometidos</p>
+                    
+                    <div class="income-features">
+                        <div class="income-feature">
+                            <i class="fas fa-ad"></i>
+                            <h4>Publicidad en Movimiento</h4>
+                            <p>Oportunidad para generar ingresos adicionales colocando publicidad en tu bicicleta mientras te desplazas por la ciudad.</p>
+                        </div>
+                        
+                        <div class="income-feature">
+                            <i class="fas fa-user-friends"></i>
+                            <h4>Programa de Referidos</h4>
+                            <p>Gana comisiones por cada persona que traigas a nuestra tienda y compre una bicicleta o servicio.</p>
+                        </div>
+                        
+                        <div class="income-feature">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Eventos y Rutas Pagadas</h4>
+                            <p>Participa en eventos organizados por marcas y genera ingresos por completar rutas específicas.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 2.5rem;">
+                        <a href="https://wa.me/573115367536?text=Quiero%20más%20información%20sobre%20el%20método%20de%20generación%20de%20ingresos" target="_blank" class="btn btn-accent">
+                            <i class="fas fa-info-circle"></i> Más Información
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contáctanos</h2>
+                <p>Visítanos o contáctanos para asesoría personalizada</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">BIKER 10 - Bicicletas y Accesorios</h3>
+                    
+                    <div style="background-color: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                        <p style="margin-bottom: 1rem; display: flex; align-items: center;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--primary); margin-right: 12px;"></i>
+                            <strong>Dirección:</strong> Calle 7 #3 - 80 B. Latino
+                        </p>
+                        <p style="margin-bottom: 1rem; display: flex; align-items: center;">
+                            <i class="fas fa-phone" style="color: var(--primary); margin-right: 12px;"></i>
+                            <strong>Teléfono:</strong> 311 536 7536
+                        </p>
+                        <p style="margin-bottom: 1rem; display: flex; align-items: center;">
+                            <i class="fas fa-clock" style="color: var(--primary); margin-right: 12px;"></i>
+                            <strong>Horario:</strong> Lunes a Sábado: 8am - 7pm
+                        </p>
+                        <p style="display: flex; align-items: center;">
+                            <i class="fas fa-bicycle" style="color: var(--primary); margin-right: 12px;"></i>
+                            <strong>Especialidad:</strong> Venta y mantenimiento de bicicletas
+                        </p>
+                    </div>
+                    
+                    <div class="contact-buttons">
+                        <a href="tel:3115367536" class="btn btn-primary">
+                            <i class="fas fa-phone"></i> Llamar Ahora
+                        </a>
+                        <a href="https://wa.me/573115367536" target="_blank" class="btn btn-success">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-map">
+                    <!-- Placeholder for map -->
+                    <div style="width: 100%; height: 100%; background-color: #e0e0e0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #666; padding: 1rem;">
+                        <i class="fas fa-map-marked-alt" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                        <h4>Ubicación BIKER 10</h4>
+                        <p style="text-align: center;">Calle 7 #3 - 80<br>Barrio Latino</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>BIKER <span>10</span></h3>
+                    <p>Venta y mantenimiento de bicicletas de alta calidad. Promoviendo un estilo de vida saludable y sostenible en nuestra comunidad.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="#mission"><i class="fas fa-chevron-right"></i> Misión y Valores</a></li>
+                        <li><a href="#bikes"><i class="fas fa-chevron-right"></i> Catálogo de Bicicletas</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Servicios</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Calle 7 #3 - 80 B. Latino</p>
+                    <p><i class="fas fa-phone"></i> 311 536 7536</p>
+                    <p><i class="fas fa-envelope"></i> ventas@biker10.com</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Sábado: 9am - 7pm</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 1990 BIKER 10 - Bicicletas y Accesorios. Todos los derechos reservados. | Venta y mantenimiento de bicicletas profesionales.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem;">Diseñado para amantes del ciclismo y la vida saludable.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainMenu = document.getElementById('mainMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    // Close mobile menu if open
+                    if(mainMenu.classList.contains('active')) {
+                        mainMenu.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation to sections on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe sections for animation
+        document.querySelectorAll('.mv-section, .bike-card, .service-card').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(section);
+        });
+        
+        // WhatsApp pre-filled messages for bike inquiries
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            if (link.href.includes('text=')) {
+                link.addEventListener('click', function() {
+                    console.log('WhatsApp inquiry sent for: ' + this.textContent);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
